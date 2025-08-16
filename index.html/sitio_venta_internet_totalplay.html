@@ -1,0 +1,106 @@
+<!-- Sitio web optimizado para dispositivos móviles -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de Internet</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; }
+        header { background: #e60000; color: white; padding: 20px; text-align: center; }
+        .hero { background: url('https://images.unsplash.com/photo-1593642532973-d31b6557fa68?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat; color: white; padding: 60px 20px; text-align: center; }
+        .hero h2 { font-size: 2em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.2em; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+        .paquetes { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
+        .tarjeta { background: linear-gradient(135deg, #e60000, #ff4d4d); color: white; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); padding: 25px; width: 250px; text-align:center; transition: transform 0.3s; }
+        .tarjeta:hover { transform: scale(1.05); }
+        .tarjeta img { width: 100px; height: 100px; object-fit: contain; margin-bottom: 15px; }
+        .tarjeta h3, .tarjeta p { margin: 10px 0; }
+        .formulario { padding:20px; text-align:center; }
+        .contacto { background: #fafafa; padding: 20px; text-align: center; }
+        button { background: white; color: #e60000; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight:bold; transition: background 0.3s, color 0.3s; }
+        button:hover { background: #e60000; color: white; }
+        input { padding:10px; width:80%; margin:5px 0; border-radius:5px; border:1px solid #ccc; }
+        
+        /* Optimización móvil */
+        @media (max-width: 768px) {
+            .paquetes { flex-direction: column; align-items: center; }
+            .tarjeta { width: 90%; padding: 20px; }
+            .hero h2 { font-size: 1.5em; }
+            .hero p { font-size: 1em; }
+            input { width: 90%; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Venta de Servicio de Internet</h1>
+    </header>
+
+    <section class="hero">
+        <h2>Internet Simétrico</h2>
+        <p>Sube y baja a la misma velocidad, juega en línea sin interrupciones, comparte en segundos</p>
+    </section>
+
+    <section class="paquetes">
+        <div class="tarjeta">
+            <img src="https://img.icons8.com/color/96/000000/wifi.png" alt="100 Mb">
+            <h3>100 Mb</h3>
+            <p>$460 MXN</p>
+            <button onclick="solicitarPaquete('100 Mb')">Solicitar</button>
+        </div>
+        <div class="tarjeta">
+            <img src="https://img.icons8.com/color/96/000000/tv.png" alt="100 Mb + TV">
+            <h3>100 Mb + TV</h3>
+            <p>$600 MXN</p>
+            <button onclick="solicitarPaquete('100 Mb + TV')">Solicitar</button>
+        </div>
+        <div class="tarjeta">
+            <img src="https://img.icons8.com/color/96/000000/wifi.png" alt="200 Mb">
+            <h3>200 Mb</h3>
+            <p>$570 MXN</p>
+            <button onclick="solicitarPaquete('200 Mb')">Solicitar</button>
+        </div>
+        <div class="tarjeta">
+            <img src="https://img.icons8.com/color/96/000000/tv.png" alt="200 Mb + TV">
+            <h3>200 Mb + TV</h3>
+            <p>$710 MXN</p>
+            <button onclick="solicitarPaquete('200 Mb + TV')">Solicitar</button>
+        </div>
+    </section>
+
+    <section class="formulario">
+        <h2>Solicita Información</h2>
+        <form onsubmit="enviarWhatsApp(event)">
+            <input type="text" placeholder="Nombre completo" required><br>
+            <input type="tel" placeholder="Número de teléfono" required><br>
+            <input type="text" placeholder="Ciudad / Colonia" required><br>
+            <button type="submit">Enviar solicitud</button>
+        </form>
+    </section>
+
+    <section class="contacto">
+        <h2>Contacto</h2>
+        <p>Fred Bautista • WhatsApp: 7775638508<br>Servicio en: Cuernavaca, Jiutepec, Emiliano Zapata, Xochitepec, Temixco</p>
+        <button onclick="window.location.href='https://wa.me/7775638508'">Enviar WhatsApp</button>
+    </section>
+
+<script>
+function enviarWhatsApp(e) {
+  e.preventDefault();
+  var nombre = document.querySelector('input[placeholder="Nombre completo"]').value;
+  var telefono = document.querySelector('input[placeholder="Número de teléfono"]').value;
+  var ciudad = document.querySelector('input[placeholder="Ciudad / Colonia"]').value;
+  var mensaje = `Hola, mi nombre es ${nombre}, mi número es ${telefono}, y vivo en ${ciudad}. Quiero información del servicio.`;
+  var url = 'https://wa.me/7775638508?text=' + encodeURIComponent(mensaje);
+  window.location.href = url;
+}
+
+function solicitarPaquete(paquete) {
+  var mensaje = `Hola, quiero contratar el paquete: ${paquete}`;
+  var url = 'https://wa.me/7775638508?text=' + encodeURIComponent(mensaje);
+  window.location.href = url;
+}
+</script>
+</body>
+</html>
